@@ -76,10 +76,10 @@ docker build . -t employees
 docker-compose up
 ```
 
-**6. Don't forget the shutdown the containers after you stop the application:**
+**6. Don't forget the stop the containers after you close the application:**
 
 ```shell
-docker-compose down --volumes
+docker-compose stop
 ```
 
 In either ways, the application should start and be running on http://localhost:8080
@@ -87,3 +87,5 @@ In either ways, the application should start and be running on http://localhost:
 ## API Documentation
 
 You can also see a documentation for the API from the `api.html` file in the docs directory.
+
+Top generate the documentation use `npm run docs`.
