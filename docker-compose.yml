@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  api:
+    container_name: employees
+    image: employees
+    depends_on:
+      - postgres
+      - mysql
+    environment:
+      - DB_TYPE=mysql # pg or mysql
+      - PG_HOST=postgres
+      - MYSQL_HOST=mysql
+      - NODE_ENV=development
+    ports:
+      - "8080:8080"
+    restart: always
+  postgres:
+    container_name: postgres
+    image: postgres
+    environment:
+      - POSTGRES_USER=${PG_USER}
+      - POSTGRES_PASSWORD=${PG_PASSWORD}
+      - POSTGRES_DB=${PG_DATABASE}
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgresdata:/var/lib/postgresql/data
+      - ./src/migrations/pg_init.sql:/docker-entrypoint-initdb.d/pg_init.sql
+    restart: always
+  mysql:
+    container_name: mysql
+    image: mysql
+    environment:
+      - MYSQL_DATABASE=${MYSQL_DATABASE}
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysqldata:/var/lib/mysqlsql/data
+      - ./src/migrations/mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql
+    restart: always
