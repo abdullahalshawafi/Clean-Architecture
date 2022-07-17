@@ -1,0 +1,27 @@
+{
+  "name": "clean-architecture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/app.js",
+  "scripts": {
+    "build": "tsc",
+    "docs": "npx @airtasker/spot generate --contract ./endpoints/api.ts --generator openapi3 --language json --out ./docs",
+    "start": "node dist/app.js",
+    "watch": "tsc -w",
+    "dev": "npx nodemon dist/app.js"
+  },
+  "author": "Abdullah Adel",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^4.17.13",
+    "@types/node": "^18.0.1",
+    "@types/pg": "^8.6.5"
+  },
+  "dependencies": {
+    "@airtasker/spot": "^1.9.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.1",
+    "mysql2": "^2.3.3",
+    "pg": "^8.7.3"
+  }
+}
