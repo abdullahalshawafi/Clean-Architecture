@@ -16,7 +16,7 @@ services:
     restart: always
   postgres:
     container_name: postgres
-    image: postgres
+    image: postgres:14-alpine
     environment:
       - POSTGRES_USER=${PG_USER}
       - POSTGRES_PASSWORD=${PG_PASSWORD}
@@ -29,7 +29,7 @@ services:
     restart: always
   mysql:
     container_name: mysql
-    image: mysql
+    image: mysql:8
     environment:
       - MYSQL_DATABASE=${MYSQL_DATABASE}
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
