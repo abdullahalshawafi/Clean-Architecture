@@ -5,7 +5,9 @@
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
-    "docs": "npx @airtasker/spot generate --contract ./endpoints/api.ts --generator openapi3 --language json --out ./docs",
+    "spot": "npx @airtasker/spot generate --contract ./endpoints/api.ts --generator openapi3 --language json --out ./specs",
+    "redoc": "npx redoc-cli build ./specs/api.json --output ./docs/api.html",
+    "docs": "npm run spot && npm run redoc",
     "start": "node dist/app.js",
     "watch": "tsc -w",
     "dev": "npx nodemon dist/app.js"
@@ -23,6 +25,7 @@
     "express": "^4.18.1",
     "mysql2": "^2.3.3",
     "pg": "^8.7.3",
+    "redoc-cli": "^0.13.16",
     "typescript": "^4.7.4"
   }
 }
