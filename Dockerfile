@@ -22,6 +22,8 @@ RUN npm install --omit=dev
 
 COPY --from=builder /usr/app/dist ./dist
 
+COPY --from=builder /usr/app/docs ./docs
+
 COPY .env ./
 
 EXPOSE 8080
