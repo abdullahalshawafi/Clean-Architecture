@@ -1,4 +1,5 @@
 import express from "express";
+import path from "path";
 import DB from "./db/dbConfig";
 import EmployeesRouter from "./routers/EmployeesRouter";
 
@@ -27,6 +28,10 @@ class Server {
     }
 
     private routerConfig() {
+        this.app.get("/api/v1", (req, res) => {
+            res.sendFile(path.join(__dirname, "../docs/api.html"));
+        });
+
         this.app.use("/api/employees", EmployeesRouter);
 
         this.app.get("/", (req, res) => {
