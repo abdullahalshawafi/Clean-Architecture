@@ -7,7 +7,7 @@ services:
       - postgres
       - mysql
     environment:
-      - DB_TYPE=mysql # pg or mysql
+      - DB_TYPE=pg # pg or mysql
       - PG_HOST=postgres
       - MYSQL_HOST=mysql
       - NODE_ENV=development
@@ -24,7 +24,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./postgresdata:/var/lib/postgresql/data
+      - postgresdata:/var/lib/postgresql/data
       - ./src/migrations/pg_init.sql:/docker-entrypoint-initdb.d/pg_init.sql
     restart: always
   mysql:
@@ -36,6 +36,9 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./mysqldata:/var/lib/mysqlsql/data
+      - mysqldata:/var/lib/mysql/data
       - ./src/migrations/mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql
     restart: always
+volumes:
+  mysqldata:
+  postgresdata:
