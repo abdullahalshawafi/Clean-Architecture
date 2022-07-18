@@ -36,9 +36,9 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - mysqldata:/var/lib/mysql/data
+      - mysqldata:/var/lib/mysql
       - ./src/migrations/mysql_init.sql:/docker-entrypoint-initdb.d/mysql_init.sql
     restart: always
 volumes:
-  mysqldata:
-  postgresdata:
+  mysqldata: {}
+  postgresdata: {}
