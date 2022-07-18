@@ -79,13 +79,11 @@ docker-compose up
 **6. Don't forget the stop the containers after you close the application:**
 
 ```shell
-docker-compose stop
+docker-compose down
 ```
 
 In either ways, the application should start and be running on http://localhost:8080
 
 ## API Documentation
 
-You can also see a documentation for the API from the `api.html` file in the docs directory.
-
-Top generate the documentation use `npm run docs`.
+To generate the documentation use `npm run docs`. Then go to http://localhost:8080/api/v1 to view the generated documentation.
